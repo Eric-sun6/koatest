@@ -1,0 +1,8 @@
+/node_modules
+/www
+/www.bak
+/platforms
+/plugins
+/.idea
+.DS_Store
+.*.swp
