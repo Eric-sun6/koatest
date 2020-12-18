@@ -7,5 +7,11 @@
   <body>
     <h1><%= title %></h1>
     <p>EJS Welcome to <%= title %></p>
+    <!-- 变量h时候才是<%= %> -->
+    <p><%= msg%></p>
+    <!-- 不确定是不是后台传过来的变量,就在变量前面加locals -->
+    <p><%= locals.name%></p>
+   <%- include('components/userInfo',{isme})%>
+   <%- include('components/blogList',list) %>
   </body>
 </html>
