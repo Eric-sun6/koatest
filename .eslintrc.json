@@ -1,0 +1,29 @@
+{
+    "extends": ["standard", "standard-jsx"],
+    "parser": "babel-eslint",
+    "globals": {
+      "Image": true,
+      "Blob": true,
+      "atob": true,
+      "XMLHttpRequest": true,
+      "FormData": true,
+      "nationConfig": true
+    },
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-multiple-empty-lines": "warn",
+      "indent": "warn",
+      "comma-dangle": "warn",
+      "no-self-compare": "warn",
+      "padded-blocks": "warn",
+      "camelcase": "off",
+      "no-trailing-spaces": "warn",
+      "react/jsx-tag-spacing": "warn",
+      "react/jsx-indent": "warn",
+      "no-debugger": "warn",
+      "no-unreachable": "warn",
+      "no-constant-condition": "warn",
+      "spaced-comment": "off"
+    }
+  }
+  
