@@ -1,5 +1,4 @@
 {
-    "extends": ["standard", "standard-jsx"],
     "parser": "babel-eslint",
     "globals": {
       "Image": true,
