@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= locals.title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= locals.title %></h1>
+    <p>EJS Welcome to <%= locals.title %></p>
+    <!-- 变量h时候才是<%= %> -->
+    <!-- 如果没有传递list变量过来，就要在前面加上locals. 才不会报错 -->
+    <% if(locals.list) { %>
+      <div>list</div>
+    <% } %>
