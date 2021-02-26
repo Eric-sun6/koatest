@@ -17,8 +17,6 @@
       "padded-blocks": "warn",
       "camelcase": "off",
       "no-trailing-spaces": "warn",
-      "react/jsx-tag-spacing": "warn",
-      "react/jsx-indent": "warn",
       "no-debugger": "warn",
       "no-unreachable": "warn",
       "no-constant-condition": "warn",
