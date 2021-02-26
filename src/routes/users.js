@@ -14,13 +14,34 @@ router.get('/bar', function (ctx, next) {
 
 })
 
-router.post('/login',function(ctx, next){
+router.post('/login',async (ctx, next)=>{
 
-    const{username, password }= ctx.request.body
+    let{username, password } = ctx.request.body
+    let userInfo = null
+    if(username === 'zhangsan' && password === '123'){
+
+        //登录成功，获取用户信息
+        userInfo={
+            userId: 1,
+            userName: 'zhangsan',
+            nickName: '张三',
+            gender: 1//男
+        }
+
+    }
+    if(userInfo === null){
+
+        ctx.body = {
+            errorno: -1,
+            msg: '登录失败'
+        }
+        return
+
+    }
     ctx.body = {
-        tag: 1000,
-        username,
-        password
+        errorno: 0,
+        data: userInfo,
+        msg: 'success'
     }
 
 })

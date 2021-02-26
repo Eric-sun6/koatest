@@ -9,7 +9,8 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const errorViewRouter = require('./routes/viewRoute/error')
-
+const jwtKoa = require('koa-jwt')
+const {SECRET} = require('./conf/constants')
 // middlewares
 app.use(bodyparser({
     enableTypes:['json', 'form', 'text']
@@ -33,7 +34,13 @@ app.use(async (ctx, next) => {
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 
 })
+//jwt
+app.use(jwtKoa({
+    secret:SECRET
+}).unless({
+    path: [/^\/users\/login/] // 自定义那些目录不需要jwt验证
 
+}))
 // routes
 let onerrorConf = {}
 onerrorConf = {

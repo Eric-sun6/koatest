@@ -8,6 +8,7 @@
       "FormData": true,
       "nationConfig": true
     },
+   
     "rules": {
       "no-unused-vars": "warn",
       "no-multiple-empty-lines": "warn",
