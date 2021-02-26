@@ -9,8 +9,6 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const errorViewRouter = require('./routes/viewRoute/error')
-// error handler 在页面上面显示
-onerror(app)
 
 // middlewares
 app.use(bodyparser({
@@ -37,6 +35,12 @@ app.use(async (ctx, next) => {
 })
 
 // routes
+let onerrorConf = {}
+onerrorConf = {
+    redirect:'/error'
+}
+// error handler 在页面上面显示
+onerror(app, onerrorConf)
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(errorViewRouter.routes(), errorViewRouter.allowedMethods())
