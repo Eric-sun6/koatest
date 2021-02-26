@@ -1,6 +1,8 @@
 const router = require('koa-router')()
 const jwt = require('jsonwebtoken')
 const {SECRET} = require('../conf/constants')
+const util = require('util')//util是node自己的模块
+const verify = util.promisify(jwt.verify)// 这个方法就是为了把jwt的verify方法变成一个promise的方法
 router.prefix('/users')
 
 router.get('/', function (ctx, next) {
@@ -57,10 +59,21 @@ router.post('/login',async (ctx, next)=>{
 //获取用户信息
 router.get('/getUserInfo', async (ctx, next)=>{
 
-    ctx.body = {
-        errno:0,
-        userinfo:'abc'
+    console.log(ctx)
+    let token = ctx.request.header.authorization
+    console.log(token)
+    try{
+
+        const payload = await verify(token.split(' ')[1], SECRET)//取出token
+        ctx.body = {
+            errno:0,
+            userinfo:payload
+        }
+
+    }catch(ex){
+
     }
+
 
 })
 module.exports = router
