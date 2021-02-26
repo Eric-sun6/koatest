@@ -1,5 +1,6 @@
 const router = require('koa-router')()
-
+const jwt = require('jsonwebtoken')
+const {SECRET} = require('../conf/constants')
 router.prefix('/users')
 
 router.get('/', function (ctx, next) {
@@ -29,6 +30,12 @@ router.post('/login',async (ctx, next)=>{
         }
 
     }
+    let token
+    if(userInfo){
+
+        token = jwt.sign(userInfo, SECRET, {expiresIn: '1h'})
+
+    }
     if(userInfo === null){
 
         ctx.body = {
@@ -40,7 +47,9 @@ router.post('/login',async (ctx, next)=>{
     }
     ctx.body = {
         errorno: 0,
-        data: userInfo,
+        data: {
+            userInfo,
+            t: token},
         msg: 'success'
     }
 

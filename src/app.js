@@ -10,6 +10,7 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const errorViewRouter = require('./routes/viewRoute/error')
 const jwtKoa = require('koa-jwt')
+
 const {SECRET} = require('./conf/constants')
 // middlewares
 app.use(bodyparser({
