@@ -72,6 +72,11 @@ router.get('/getUserInfo', async (ctx, next)=>{
 
     }catch(ex){
 
+        ctx.body = {
+            errno:0,
+            msg:'verify token failed'
+        }
+
     }
 
 
