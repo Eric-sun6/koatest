@@ -10,3 +10,4 @@ json web token, 用户认证成功以后，server 端就返回一个加密的 to
 # 如何新建一个 koa2 的项目
 
 使用 koa2 -e xxx(项目名称)
+# 跳过token的验证

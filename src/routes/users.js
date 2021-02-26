@@ -54,4 +54,13 @@ router.post('/login',async (ctx, next)=>{
     }
 
 })
+//获取用户信息
+router.get('/getUserInfo', async (ctx, next)=>{
+
+    ctx.body = {
+        errno:0,
+        userinfo:'abc'
+    }
+
+})
 module.exports = router
