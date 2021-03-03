@@ -27,7 +27,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
-// session 配置 这只是设置了session但是并没有用session
+// session 配置 这只是设置了session但是并没有用session,如果说不用的话，就不会往redis中保存数据
 app.keys = ['Usdadad12313@#%$#']
 app.use(session({
     key: 'weibo.sid',// cookie name 默认是'koa.sid
