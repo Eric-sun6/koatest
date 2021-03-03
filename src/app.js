@@ -27,7 +27,7 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
-// session 配置
+// session 配置 这只是设置了session但是并没有用session
 app.keys = ['Usdadad12313@#%$#']
 app.use(session({
     key: 'weibo.sid',// cookie name 默认是'koa.sid
@@ -52,12 +52,12 @@ app.use(async (ctx, next) => {
 
 })
 //jwt
-app.use(jwtKoa({
-    secret:SECRET
-}).unless({
-    path: [/^\/users\/login/] // 自定义那些目录不需要jwt验证
+// app.use(jwtKoa({
+//     secret:SECRET
+// }).unless({
+//     path: [/^\/users\/login/] // 自定义那些目录不需要jwt验证
 
-}))
+// }))
 // routes
 let onerrorConf = {}
 onerrorConf = {
