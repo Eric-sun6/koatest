@@ -66,7 +66,7 @@ router.get('/getUserInfo', async (ctx, next)=>{
 
         // const payload = await verify(token.split(' ')[1], SECRET)//取出token
         ctx.body = {
-            errno:0,
+            errno:0
             // userinfo:payload
         }
 
