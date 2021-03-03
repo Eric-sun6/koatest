@@ -10,8 +10,10 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const errorViewRouter = require('./routes/viewRoute/error')
 const jwtKoa = require('koa-jwt')
-
+const session = require('koa-generic-session')
+const redisStore = require('koa-redis')
 const {SECRET} = require('./conf/constants')
+const {REDIS_CONF} = require('./conf/db')
 // middlewares
 app.use(bodyparser({
     enableTypes:['json', 'form', 'text']
@@ -25,7 +27,21 @@ app.use(require('koa-static')(__dirname + '/public'))
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
-
+// session 配置
+app.keys = ['Usdadad12313@#%$#']
+app.use(session({
+    key: 'weibo.sid',// cookie name 默认是'koa.sid
+    prefix: 'weibo.sess:',// redis key 的前提默认是'koa:sess'
+    cookie: {
+        path: '/',//根目录
+        httpOnly: true, //不允许客户端更改
+        maxAge: 24 * 60 * 1000
+    },
+    ttl: 24 * 60 * 1000, //redis 过期时间，不写默认同cookie的过期时间
+    store: redisStore({
+        all: `${REDIS_CONF.host}:${REDIS_CONF.port}`
+    })
+}))
 // logger
 app.use(async (ctx, next) => {
 
