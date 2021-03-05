@@ -58,12 +58,10 @@ router.post('/login',async (ctx, next)=>{
 })
 //获取用户信息
 router.get('/getUserInfo', async (ctx, next)=>{
-
     console.log(ctx)
     // let token = ctx.request.header.authorization
     console.log(token)
     try{
-
         // const payload = await verify(token.split(' ')[1], SECRET)//取出token
         ctx.body = {
             errno:0
